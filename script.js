@@ -49,8 +49,10 @@ function calculateDCA(prices, monthlyAmount, years) {
   const months = years * 12;
   const monthlyPoints = pickMonthlyPoints(prices, months);
 
-  if (!monthlyPoints.length) {
-    throw new Error("Nuk ka të dhëna mujore të mjaftueshme për periudhën e zgjedhur.");
+  if (monthlyPoints.length < months) {
+    throw new Error(
+      "Nuk ka të dhëna mujore të mjaftueshme për periudhën e zgjedhur. Zgjidh një periudhë më të shkurtër."
+    );
   }
 
   let totalInvested = 0;
@@ -97,7 +99,20 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
+  if (monthlyAmount <= 0 || years <= 0) {
+    resultBox.textContent = "Vlerat duhet të jenë më të mëdha se zero.";
+    return;
+  }
+
+  if (!Number.isInteger(years)) {
+    resultBox.textContent = "Vitet duhet të jenë numër i plotë.";
+    return;
+  }
+
   const days = years * 365 + 40;
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  submitButton.disabled = true;
 
   resultBox.textContent = "Duke llogaritur me të dhënat historike...";
 
@@ -126,5 +141,7 @@ form.addEventListener("submit", async (event) => {
     `;
   } catch (error) {
     resultBox.textContent = `Gabim: ${error.message}`;
+  } finally {
+    submitButton.disabled = false;
   }
 });
