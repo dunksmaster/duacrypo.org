@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akademia Kripto Shqip - Edukim & Kalkulator DCA</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <h1>Akademia Kripto Shqip</h1>
+        <p>
+          Platformë edukative në gjuhën shqipe për të mësuar bazat e kriptomonedhave,
+          menaxhimin e rrezikut dhe investimin e qëndrueshëm.
+        </p>
+        <a class="btn" href="#kalkulatori">Provo kalkulatorin DCA</a>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <section class="card">
+        <h2>Ku është faqja?</h2>
+        <p>
+          Faqja hapet nga <strong>index.html</strong>. Nëse nuk shfaqet, nis një server lokal:
+          <code>python3 -m http.server 8000</code> dhe hape <code>http://localhost:8000</code>.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Çfarë do të mësosh?</h2>
+        <ul>
+          <li>Çfarë janë Bitcoin dhe kriptomonedhat.</li>
+          <li>Si funksionon strategjia DCA (investim periodik me shumë fikse).</li>
+          <li>Si të ndërtosh disiplinë financiare me investime mujore.</li>
+          <li>Si të kuptosh rrezikun dhe luhatjet e tregut (volatilitetin).</li>
+        </ul>
+      </section>
+
+      <section id="kalkulatori" class="card">
+        <h2>Kalkulator DCA në gjuhën shqipe</h2>
+        <p>
+          Llogarit sa mund të kishe sot nëse do të investoje çdo muaj në kripto që nga
+          një periudhë e caktuar (p.sh. 20€ në muaj për 5 vitet e fundit).
+        </p>
+
+        <div class="quick-example">
+          <button id="presetExample" type="button" class="btn btn-secondary">
+            Shembull i shpejtë: 20€ / muaj për 5 vite
+          </button>
+        </div>
+
+        <form id="dca-form" class="grid">
+          <label>
+            Shuma mujore (€)
+            <input id="monthlyAmount" type="number" min="1" step="1" value="20" required />
+          </label>
+
+          <label>
+            Vitet e investimit
+            <input id="years" type="number" min="1" max="15" step="1" value="5" required />
+          </label>
+
+          <label>
+            Kriptomonedha
+            <select id="coinId">
+              <option value="bitcoin">Bitcoin (BTC)</option>
+              <option value="ethereum">Ethereum (ETH)</option>
+            </select>
+          </label>
+
+          <button type="submit" class="btn">Llogarit</button>
+        </form>
+
+        <div id="result" class="result" aria-live="polite"></div>
+      </section>
+
+      <section class="card legal">
+        <h2>Korniza ligjore në Shqipëri (informuese)</h2>
+        <p>
+          Kjo faqe ka qëllim vetëm edukativ dhe informacioni nuk përbën këshillë financiare,
+          juridike apo tatimore. Vendimet për investim janë përgjegjësi personale.
+        </p>
+        <ul>
+          <li>Respektoni rregullat shqiptare për deklarimin e të ardhurave dhe tatimet.</li>
+          <li>Ruani dokumentacionin e transaksioneve për transparencë financiare.</li>
+          <li>Verifikoni platformat që përdorni dhe zbatoni masa për mbrojtje të konsumatorit.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© 2026 Akademia Kripto Shqip • Edukim në gjuhën shqipe</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
