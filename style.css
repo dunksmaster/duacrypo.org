@@ -49,6 +49,10 @@ h1 {
   box-shadow: 0 10px 30px #00000033;
 }
 
+.quick-example {
+  margin-bottom: 1rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -90,6 +94,10 @@ select {
   transition: transform 0.15s ease;
 }
 
+.btn-secondary {
+  background: linear-gradient(135deg, #334155, #64748b);
+}
+
 .btn:hover {
   transform: translateY(-1px);
 }
@@ -106,7 +114,8 @@ select {
   color: var(--accent2);
 }
 
-.legal p {
+.legal p,
+.legal li {
   color: var(--muted);
 }
 

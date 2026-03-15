@@ -1,5 +1,6 @@
 const form = document.getElementById("dca-form");
 const resultBox = document.getElementById("result");
+const presetExampleBtn = document.getElementById("presetExample");
 
 function formatEuro(value) {
   return new Intl.NumberFormat("sq-AL", {
@@ -16,6 +17,22 @@ function formatCoin(value) {
   }).format(value);
 }
 
+function monthKeyFromTimestamp(timestamp) {
+  const date = new Date(timestamp);
+  return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}`;
+}
+
+function pickMonthlyPoints(prices, months) {
+  const byMonth = new Map();
+
+  for (const point of prices) {
+    const [timestamp] = point;
+    byMonth.set(monthKeyFromTimestamp(timestamp), point);
+  }
+
+  return Array.from(byMonth.values()).slice(-months);
+}
+
 async function loadMarketData(coinId, days) {
   const url = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=eur&days=${days}&interval=daily`;
   const response = await fetch(url);
@@ -30,14 +47,16 @@ async function loadMarketData(coinId, days) {
 
 function calculateDCA(prices, monthlyAmount, years) {
   const months = years * 12;
-  const step = 30;
+  const monthlyPoints = pickMonthlyPoints(prices, months);
 
-  const points = prices.filter((_, i) => i % step === 0).slice(-months);
+  if (!monthlyPoints.length) {
+    throw new Error("Nuk ka të dhëna mujore të mjaftueshme për periudhën e zgjedhur.");
+  }
 
   let totalInvested = 0;
   let totalCoins = 0;
 
-  for (const [, price] of points) {
+  for (const [, price] of monthlyPoints) {
     totalInvested += monthlyAmount;
     totalCoins += monthlyAmount / price;
   }
@@ -47,13 +66,24 @@ function calculateDCA(prices, monthlyAmount, years) {
   const profit = portfolioValue - totalInvested;
 
   return {
-    monthlyPurchases: points.length,
+    monthlyPurchases: monthlyPoints.length,
     totalInvested,
     totalCoins,
     portfolioValue,
     profit,
   };
 }
+
+function setPresetExample() {
+  document.getElementById("monthlyAmount").value = 20;
+  document.getElementById("years").value = 5;
+  document.getElementById("coinId").value = "bitcoin";
+}
+
+presetExampleBtn.addEventListener("click", () => {
+  setPresetExample();
+  resultBox.textContent = "Shembulli u vendos: 20€ / muaj për 5 vite (Bitcoin). Kliko “Llogarit”.";
+});
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -67,7 +97,7 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  const days = years * 365 + 10;
+  const days = years * 365 + 40;
 
   resultBox.textContent = "Duke llogaritur me të dhënat historike...";
 
