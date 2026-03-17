@@ -1,7 +1,13 @@
 # Akademia Kripto Shqip
 
-Faqja është në këtë skedar:
+Faqja kryesore:
 - `index.html`
+
+Faqe shtesë:
+- `investimi-bitcoin.html`
+- `kujdes.html`
+- `informacion.html`
+- `mbeshtetje.html`
 
 ## Si ta hapësh lokalisht
 Nga rrënja e projektit (`/workspace/duacrypo.org`) ekzekuto:
@@ -17,4 +23,6 @@ Pastaj hap në shfletues:
 ## Çfarë përfshin
 - Faqe edukative në gjuhën shqipe për kripto.
 - Kalkulator DCA në shqip (me të dhëna historike nga CoinGecko).
-- Shembull i gatshëm: **20€ / muaj për 5 vite**.
+- Udhëzues bazë për investim në Bitcoin.
+- Udhëzime sigurie për verifikim dhe anti-phishing.
+- Faqe informacioni për shërbimet Duacrypto.
