@@ -1,64 +1,1272 @@
-<!doctype html>
-<html lang="sq">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DuaCrypo - Kategoritë</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f5f7fb;
-        color: #1f2937;
-        margin: 0;
-      }
-      .container {
-        max-width: 820px;
-        margin: 48px auto;
-        padding: 0 20px;
-      }
-      h1 {
-        margin-bottom: 8px;
-      }
-      .subtitle {
-        color: #4b5563;
-        margin-bottom: 28px;
-      }
-      .category-card {
-        display: block;
-        text-decoration: none;
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 22px;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .category-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
-      }
-      .category-title {
-        color: #111827;
-        font-size: 1.1rem;
-        margin: 0 0 6px;
-      }
-      .category-text {
-        color: #374151;
-        margin: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <main class="container">
-      <h1>Kategoritë Kryesore</h1>
-      <p class="subtitle">Zgjidhni një kategori për të parë udhëzuesin e plotë.</p>
-
-      <a class="category-card" href="duhet-te-shes-fitimet.html">
-        <h2 class="category-title">Duhet të shes fitimet për të tërhequr?</h2>
-        <p class="category-text">
-          Hape këtë kategori për hapat e tërheqjes së fitimeve nga Binance dhe CEX.IO.
-        </p>
-      </a>
-    </main>
-  </body>
-</html>
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+index 64548fbd07e5f07c5a5fab68b0868e5bd902fbdb..049c4dfa128a7ae4dac5df4aa8734a66171cdac4 100644
+--- a/index.html
++++ b/index.html
+@@ -1,85 +1,1187 @@
+-<!doctype html>
++<!DOCTYPE html>
+ <html lang="sq">
+-  <head>
+-    <meta charset="UTF-8" />
+-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <title>DUA CRYPTO</title>
+-    <style>
+-      :root {
+-        --bg: #000000;
+-        --green-1: #5fbf43;
+-        --green-2: #8cd057;
+-        --green-3: #437f2f;
+-      }
++<head>
++<meta charset="UTF-8">
++<meta name="viewport" content="width=device-width, initial-scale=1.0">
++<title>Investime në Kriptomonedha — Strategji dhe Këshilla</title>
++<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
++<style>
++  :root {
++    --bg: #050810;
++    --surface: #0b1121;
++    --surface2: #111a30;
++    --accent: #f0c040;
++    --accent2: #4af0b0;
++    --accent3: #f06040;
++    --text: #e8edf8;
++    --muted: #6a7a9a;
++    --border: rgba(240,192,64,0.15);
++  }
+ 
+-      * {
+-        box-sizing: border-box;
+-      }
++  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+-      body {
+-        margin: 0;
+-        min-height: 100vh;
+-        display: grid;
+-        place-items: center;
+-        background: var(--bg);
+-        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+-      }
++  html { scroll-behavior: smooth; }
+ 
+-      .logo-wrap {
+-        display: flex;
+-        flex-direction: column;
+-        align-items: center;
+-        gap: 18px;
+-      }
++  body {
++    background: var(--bg);
++    color: var(--text);
++    font-family: 'DM Sans', sans-serif;
++    overflow-x: hidden;
++    cursor: none;
++  }
+ 
+-      .mark {
+-        width: min(28vw, 150px);
+-        aspect-ratio: 1 / 1;
+-        border-radius: 999px 999px 0 0;
+-        background:
+-          radial-gradient(circle at 18% 65%, transparent 24%, #000 25%),
+-          radial-gradient(circle at 50% 66%, transparent 24%, #000 25%),
+-          radial-gradient(circle at 82% 65%, transparent 24%, #000 25%),
+-          radial-gradient(circle at 50% 100%, #000 44%, transparent 45%),
+-          conic-gradient(
+-            from 180deg,
+-            var(--green-1) 0deg 35deg,
+-            var(--green-2) 35deg 62deg,
+-            var(--green-1) 62deg 95deg,
+-            var(--green-3) 95deg 122deg,
+-            var(--green-1) 122deg 150deg,
+-            var(--green-2) 150deg 180deg,
+-            var(--green-1) 180deg
+-          );
+-        position: relative;
+-        overflow: hidden;
+-      }
++  /* Custom cursor */
++  .cursor {
++    position: fixed;
++    width: 10px; height: 10px;
++    background: var(--accent);
++    border-radius: 50%;
++    pointer-events: none;
++    z-index: 9999;
++    transition: transform 0.1s ease;
++    mix-blend-mode: difference;
++  }
++  .cursor-ring {
++    position: fixed;
++    width: 36px; height: 36px;
++    border: 1.5px solid var(--accent);
++    border-radius: 50%;
++    pointer-events: none;
++    z-index: 9998;
++    transition: all 0.18s ease;
++    opacity: 0.5;
++  }
+ 
+-      .mark span {
+-        position: absolute;
+-        left: 50%;
+-        top: 55%;
+-        transform: translate(-50%, -50%) rotate(6deg);
+-        color: #1d3e16;
+-        font-size: clamp(2.6rem, 8vw, 4.2rem);
+-        line-height: 1;
+-      }
++  /* Grid noise overlay */
++  body::before {
++    content: '';
++    position: fixed;
++    inset: 0;
++    background-image:
++      linear-gradient(rgba(240,192,64,0.03) 1px, transparent 1px),
++      linear-gradient(90deg, rgba(240,192,64,0.03) 1px, transparent 1px);
++    background-size: 60px 60px;
++    pointer-events: none;
++    z-index: 0;
++  }
++
++  /* Animated gradient orbs */
++  .orb {
++    position: fixed;
++    border-radius: 50%;
++    filter: blur(80px);
++    opacity: 0.18;
++    pointer-events: none;
++    z-index: 0;
++    animation: orb-drift 20s ease-in-out infinite alternate;
++  }
++  .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #f0c040, transparent); top: -150px; left: -100px; animation-delay: 0s; }
++  .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #4af0b0, transparent); bottom: -100px; right: -100px; animation-delay: -7s; }
++  .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, #f06040, transparent); top: 50%; left: 60%; animation-delay: -14s; }
++  @keyframes orb-drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px, 40px) scale(1.1); } }
++
++  /* NAV */
++  nav {
++    position: fixed;
++    top: 0; left: 0; right: 0;
++    z-index: 100;
++    display: flex;
++    align-items: center;
++    justify-content: space-between;
++    padding: 20px 48px;
++    background: linear-gradient(to bottom, rgba(5,8,16,0.9), transparent);
++    backdrop-filter: blur(12px);
++  }
++  .logo {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: 1.2rem;
++    letter-spacing: 0.05em;
++    color: var(--accent);
++    text-transform: uppercase;
++  }
++  .logo span { color: var(--text); }
++  nav ul { list-style: none; display: flex; gap: 36px; }
++  nav ul a {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.75rem;
++    color: var(--muted);
++    text-decoration: none;
++    letter-spacing: 0.1em;
++    text-transform: uppercase;
++    transition: color 0.2s;
++  }
++  nav ul a:hover { color: var(--accent); }
++
++  /* SECTIONS */
++  section { position: relative; z-index: 1; }
++
++  /* HERO */
++  .hero {
++    min-height: 100vh;
++    display: flex;
++    flex-direction: column;
++    justify-content: center;
++    padding: 120px 48px 80px;
++    max-width: 1200px;
++    margin: 0 auto;
++  }
++  .hero-eyebrow {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.72rem;
++    letter-spacing: 0.25em;
++    color: var(--accent);
++    text-transform: uppercase;
++    margin-bottom: 28px;
++    opacity: 0;
++    animation: fade-up 0.8s 0.2s forwards;
++  }
++  .hero-title {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: clamp(3.2rem, 7vw, 7rem);
++    line-height: 0.95;
++    letter-spacing: -0.02em;
++    margin-bottom: 32px;
++    opacity: 0;
++    animation: fade-up 0.8s 0.4s forwards;
++  }
++  .hero-title .line-gold { color: var(--accent); display: block; }
++  .hero-title .line-green { color: var(--accent2); display: block; }
++  .hero-sub {
++    font-size: 1.1rem;
++    color: var(--muted);
++    max-width: 520px;
++    line-height: 1.7;
++    font-weight: 300;
++    margin-bottom: 48px;
++    opacity: 0;
++    animation: fade-up 0.8s 0.6s forwards;
++  }
++  .hero-cta {
++    display: flex;
++    gap: 16px;
++    opacity: 0;
++    animation: fade-up 0.8s 0.8s forwards;
++  }
++  .btn {
++    display: inline-flex;
++    align-items: center;
++    gap: 10px;
++    padding: 14px 32px;
++    font-family: 'Syne', sans-serif;
++    font-weight: 700;
++    font-size: 0.9rem;
++    letter-spacing: 0.05em;
++    text-decoration: none;
++    border: none;
++    cursor: pointer;
++    transition: all 0.25s ease;
++  }
++  .btn-primary {
++    background: var(--accent);
++    color: #050810;
++  }
++  .btn-primary:hover {
++    background: #fff;
++    transform: translate(-2px, -3px);
++    box-shadow: 4px 6px 0 var(--accent);
++  }
++  .btn-outline {
++    background: transparent;
++    color: var(--text);
++    border: 1.5px solid rgba(232,237,248,0.2);
++  }
++  .btn-outline:hover {
++    border-color: var(--accent);
++    color: var(--accent);
++  }
++
++  /* TICKER */
++  .ticker-wrap {
++    overflow: hidden;
++    background: var(--surface);
++    border-top: 1px solid var(--border);
++    border-bottom: 1px solid var(--border);
++    padding: 12px 0;
++    margin-bottom: 0;
++  }
++  .ticker {
++    display: flex;
++    gap: 0;
++    animation: ticker 30s linear infinite;
++    white-space: nowrap;
++  }
++  .ticker-item {
++    display: inline-flex;
++    align-items: center;
++    gap: 8px;
++    padding: 0 40px;
++    font-family: 'Space Mono', monospace;
++    font-size: 0.78rem;
++    color: var(--muted);
++    border-right: 1px solid var(--border);
++  }
++  .ticker-item .symbol { color: var(--text); font-weight: 700; }
++  .ticker-item .up { color: var(--accent2); }
++  .ticker-item .down { color: var(--accent3); }
++  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
++
++  /* STATS BAND */
++  .stats-band {
++    padding: 80px 48px;
++    max-width: 1200px;
++    margin: 0 auto;
++    display: grid;
++    grid-template-columns: repeat(4, 1fr);
++    gap: 1px;
++    background: var(--border);
++  }
++  .stat-box {
++    background: var(--bg);
++    padding: 40px 32px;
++    position: relative;
++    overflow: hidden;
++  }
++  .stat-box::after {
++    content: '';
++    position: absolute;
++    bottom: 0; left: 32px; right: 32px;
++    height: 2px;
++    background: var(--accent);
++    transform: scaleX(0);
++    transform-origin: left;
++    transition: transform 0.4s ease;
++  }
++  .stat-box:hover::after { transform: scaleX(1); }
++  .stat-num {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: 2.8rem;
++    color: var(--accent);
++    letter-spacing: -0.02em;
++  }
++  .stat-label {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.7rem;
++    color: var(--muted);
++    letter-spacing: 0.15em;
++    text-transform: uppercase;
++    margin-top: 8px;
++  }
++
++  /* STRATEGIES */
++  .strategies {
++    padding: 100px 48px;
++    max-width: 1200px;
++    margin: 0 auto;
++  }
++  .section-header {
++    display: flex;
++    align-items: baseline;
++    gap: 24px;
++    margin-bottom: 64px;
++  }
++  .section-num {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.7rem;
++    color: var(--accent);
++    letter-spacing: 0.2em;
++  }
++  .section-title {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: clamp(1.8rem, 3.5vw, 3rem);
++    letter-spacing: -0.02em;
++  }
++  .strategy-grid {
++    display: grid;
++    grid-template-columns: repeat(3, 1fr);
++    gap: 2px;
++    background: var(--border);
++  }
++  .strategy-card {
++    background: var(--surface);
++    padding: 48px 40px;
++    position: relative;
++    overflow: hidden;
++    transition: background 0.3s;
++  }
++  .strategy-card:hover { background: var(--surface2); }
++  .strategy-card::before {
++    content: attr(data-n);
++    position: absolute;
++    top: 24px; right: 28px;
++    font-family: 'Syne', sans-serif;
++    font-size: 4rem;
++    font-weight: 800;
++    color: rgba(240,192,64,0.06);
++    line-height: 1;
++  }
++  .strategy-icon {
++    width: 48px; height: 48px;
++    display: flex; align-items: center; justify-content: center;
++    background: rgba(240,192,64,0.08);
++    border: 1px solid rgba(240,192,64,0.2);
++    margin-bottom: 28px;
++    font-size: 1.4rem;
++  }
++  .strategy-title {
++    font-family: 'Syne', sans-serif;
++    font-weight: 700;
++    font-size: 1.15rem;
++    margin-bottom: 16px;
++    letter-spacing: -0.01em;
++  }
++  .strategy-desc {
++    font-size: 0.92rem;
++    color: var(--muted);
++    line-height: 1.75;
++    font-weight: 300;
++  }
++  .strategy-tag {
++    display: inline-block;
++    margin-top: 24px;
++    padding: 5px 14px;
++    background: rgba(74,240,176,0.08);
++    border: 1px solid rgba(74,240,176,0.2);
++    font-family: 'Space Mono', monospace;
++    font-size: 0.65rem;
++    letter-spacing: 0.1em;
++    color: var(--accent2);
++    text-transform: uppercase;
++  }
++
++  /* RISK METER */
++  .risk-section {
++    padding: 100px 48px;
++    background: var(--surface);
++  }
++  .risk-inner {
++    max-width: 1200px;
++    margin: 0 auto;
++    display: grid;
++    grid-template-columns: 1fr 1fr;
++    gap: 80px;
++    align-items: center;
++  }
++  .risk-title {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: clamp(1.8rem, 3vw, 2.8rem);
++    letter-spacing: -0.02em;
++    margin-bottom: 20px;
++  }
++  .risk-title em { font-style: normal; color: var(--accent3); }
++  .risk-desc {
++    font-size: 0.95rem;
++    color: var(--muted);
++    line-height: 1.8;
++    font-weight: 300;
++    margin-bottom: 40px;
++  }
++  .risk-bars { display: flex; flex-direction: column; gap: 20px; }
++  .risk-row { display: flex; flex-direction: column; gap: 8px; }
++  .risk-row-header { display: flex; justify-content: space-between; align-items: center; }
++  .risk-name {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.72rem;
++    letter-spacing: 0.1em;
++    text-transform: uppercase;
++    color: var(--text);
++  }
++  .risk-pct {
++    font-family: 'Syne', sans-serif;
++    font-weight: 700;
++    font-size: 0.9rem;
++    color: var(--accent);
++  }
++  .risk-track {
++    height: 4px;
++    background: rgba(255,255,255,0.06);
++    overflow: hidden;
++  }
++  .risk-fill {
++    height: 100%;
++    background: linear-gradient(90deg, var(--accent2), var(--accent));
++    transform-origin: left;
++    transform: scaleX(0);
++    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
++  }
++  .risk-fill.animate { transform: scaleX(1); }
++
++  /* TIPS */
++  .tips {
++    padding: 100px 48px;
++    max-width: 1200px;
++    margin: 0 auto;
++  }
++  .tips-list {
++    display: flex;
++    flex-direction: column;
++    gap: 0;
++    margin-top: 64px;
++  }
++  .tip-row {
++    display: grid;
++    grid-template-columns: 80px 1fr auto;
++    align-items: center;
++    padding: 32px 0;
++    border-bottom: 1px solid var(--border);
++    gap: 32px;
++    transition: all 0.25s;
++    cursor: default;
++  }
++  .tip-row:hover { padding-left: 16px; }
++  .tip-n {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: 2.2rem;
++    color: rgba(240,192,64,0.15);
++    letter-spacing: -0.05em;
++  }
++  .tip-row:hover .tip-n { color: var(--accent); }
++  .tip-text {
++    font-family: 'Syne', sans-serif;
++    font-weight: 600;
++    font-size: 1.1rem;
++    letter-spacing: -0.01em;
++  }
++  .tip-badge {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.65rem;
++    letter-spacing: 0.1em;
++    text-transform: uppercase;
++    padding: 5px 12px;
++    border: 1px solid;
++  }
++  .badge-low { color: var(--accent2); border-color: rgba(74,240,176,0.3); }
++  .badge-med { color: var(--accent); border-color: rgba(240,192,64,0.3); }
++  .badge-high { color: var(--accent3); border-color: rgba(240,96,64,0.3); }
++
++  /* DISCLAIMER */
++  .disclaimer {
++    padding: 48px;
++    background: var(--surface);
++    border-top: 1px solid var(--border);
++    border-bottom: 1px solid var(--border);
++  }
++  .disclaimer-inner {
++    max-width: 1200px;
++    margin: 0 auto;
++    display: flex;
++    gap: 24px;
++    align-items: flex-start;
++  }
++  .disclaimer-icon {
++    font-size: 1.4rem;
++    opacity: 0.6;
++    flex-shrink: 0;
++    margin-top: 2px;
++  }
++  .disclaimer-text {
++    font-size: 0.83rem;
++    color: var(--muted);
++    line-height: 1.8;
++  }
++  .disclaimer-text strong { color: var(--accent); font-weight: 600; }
++
++  /* FOOTER */
++  footer {
++    padding: 60px 48px;
++    max-width: 1200px;
++    margin: 0 auto;
++    display: flex;
++    justify-content: space-between;
++    align-items: center;
++  }
++  .footer-logo {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: 1.4rem;
++    color: var(--accent);
++  }
++  .footer-copy {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.7rem;
++    color: var(--muted);
++    letter-spacing: 0.08em;
++  }
++
++  @keyframes fade-up {
++    from { opacity: 0; transform: translateY(30px); }
++    to { opacity: 1; transform: translateY(0); }
++  }
++
++  /* Responsive */
++  @media (max-width: 900px) {
++    nav { padding: 18px 24px; }
++    nav ul { display: none; }
++    .hero { padding: 100px 24px 60px; }
++    .stats-band, .strategy-grid { grid-template-columns: 1fr 1fr; }
++    .risk-inner { grid-template-columns: 1fr; gap: 48px; }
++    .strategies, .tips, .risk-section, footer, .disclaimer { padding-left: 24px; padding-right: 24px; }
++    footer { flex-direction: column; gap: 20px; text-align: center; }
++  }
++  @media (max-width: 600px) {
++    .stats-band, .strategy-grid { grid-template-columns: 1fr; }
++    .tip-row { grid-template-columns: 60px 1fr; }
++    .tip-badge { display: none; }
++  }
++
++  /* ─── PORTFOLIO ALLOCATOR ─── */
++  .allocator-section {
++    padding: 100px 48px;
++    max-width: 1200px;
++    margin: 0 auto;
++  }
++  .allocator-layout {
++    display: grid;
++    grid-template-columns: 1fr 1fr;
++    gap: 64px;
++    align-items: start;
++    margin-top: 64px;
++  }
++  .profile-cards { display: flex; flex-direction: column; gap: 12px; }
++  .profile-card {
++    padding: 24px 28px;
++    border: 1px solid var(--border);
++    background: var(--surface);
++    cursor: pointer;
++    transition: all 0.25s;
++    position: relative;
++    overflow: hidden;
++  }
++  .profile-card::before {
++    content: '';
++    position: absolute;
++    left: 0; top: 0; bottom: 0;
++    width: 3px;
++    background: var(--accent);
++    transform: scaleY(0);
++    transform-origin: bottom;
++    transition: transform 0.3s ease;
++  }
++  .profile-card.active, .profile-card:hover { background: var(--surface2); }
++  .profile-card.active::before, .profile-card:hover::before { transform: scaleY(1); }
++  .profile-card-title {
++    font-family: 'Syne', sans-serif;
++    font-weight: 700;
++    font-size: 1rem;
++    margin-bottom: 6px;
++  }
++  .profile-card-sub {
++    font-size: 0.83rem;
++    color: var(--muted);
++    line-height: 1.5;
++  }
++  .alloc-display { position: sticky; top: 100px; }
++  .donut-wrap {
++    position: relative;
++    width: 220px;
++    height: 220px;
++    margin: 0 auto 40px;
++  }
++  .donut-wrap svg { transform: rotate(-90deg); }
++  .donut-label {
++    position: absolute;
++    inset: 0;
++    display: flex;
++    flex-direction: column;
++    align-items: center;
++    justify-content: center;
++    font-family: 'Syne', sans-serif;
++  }
++  .donut-pct { font-size: 2rem; font-weight: 800; color: var(--accent); }
++  .donut-sub { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Space Mono', monospace; }
++  .alloc-legend { display: flex; flex-direction: column; gap: 14px; }
++  .legend-row {
++    display: flex;
++    align-items: center;
++    gap: 14px;
++  }
++  .legend-dot {
++    width: 10px; height: 10px;
++    border-radius: 2px;
++    flex-shrink: 0;
++  }
++  .legend-name { font-size: 0.88rem; flex: 1; }
++  .legend-pct {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.78rem;
++    color: var(--muted);
++  }
++
++  /* ─── MARKET CYCLE ─── */
++  .cycle-section {
++    padding: 100px 48px;
++    background: var(--surface);
++  }
++  .cycle-inner {
++    max-width: 1200px;
++    margin: 0 auto;
++  }
++  .cycle-track {
++    margin-top: 64px;
++    position: relative;
++    padding-bottom: 60px;
++  }
++  .cycle-line {
++    position: absolute;
++    top: 36px; left: 20px; right: 20px;
++    height: 2px;
++    background: var(--border);
++  }
++  .cycle-progress {
++    position: absolute;
++    top: 36px; left: 20px;
++    height: 2px;
++    background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent3));
++    width: 0;
++    transition: width 1.5s cubic-bezier(0.22,1,0.36,1);
++  }
++  .cycle-nodes {
++    display: flex;
++    justify-content: space-between;
++    position: relative;
++  }
++  .cycle-node { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 120px; }
++  .cycle-dot {
++    width: 18px; height: 18px;
++    border-radius: 50%;
++    border: 2px solid var(--border);
++    background: var(--surface);
++    z-index: 1;
++    position: relative;
++    transition: all 0.4s ease;
++    cursor: default;
++  }
++  .cycle-node:hover .cycle-dot {
++    transform: scale(1.4);
++    box-shadow: 0 0 16px currentColor;
++  }
++  .cn-accumulation .cycle-dot { border-color: var(--accent2); background: rgba(74,240,176,0.15); }
++  .cn-bull .cycle-dot { border-color: var(--accent); background: rgba(240,192,64,0.15); }
++  .cn-distribution .cycle-dot { border-color: #f0a030; background: rgba(240,160,48,0.15); }
++  .cn-bear .cycle-dot { border-color: var(--accent3); background: rgba(240,96,64,0.15); }
++  .cn-bottom .cycle-dot { border-color: #a06af0; background: rgba(160,106,240,0.15); }
++  .cycle-phase {
++    font-family: 'Syne', sans-serif;
++    font-weight: 700;
++    font-size: 0.85rem;
++    text-align: center;
++    margin-top: 8px;
++  }
++  .cycle-desc {
++    font-size: 0.73rem;
++    color: var(--muted);
++    text-align: center;
++    line-height: 1.5;
++  }
++  .cycle-signal {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.62rem;
++    letter-spacing: 0.08em;
++    text-align: center;
++    margin-top: 4px;
++  }
++  .sig-buy { color: var(--accent2); }
++  .sig-hold { color: var(--accent); }
++  .sig-sell { color: var(--accent3); }
++  .sig-wait { color: #a06af0; }
++
++  /* ─── GLOSSARY ─── */
++  .glossary-section {
++    padding: 100px 48px;
++    max-width: 1200px;
++    margin: 0 auto;
++  }
++  .glossary-grid {
++    display: grid;
++    grid-template-columns: repeat(2, 1fr);
++    gap: 2px;
++    background: var(--border);
++    margin-top: 64px;
++  }
++  .glossary-item {
++    background: var(--surface);
++    padding: 32px 36px;
++    display: flex;
++    gap: 20px;
++    transition: background 0.2s;
++  }
++  .glossary-item:hover { background: var(--surface2); }
++  .glos-term {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: 0.85rem;
++    color: var(--accent);
++    letter-spacing: 0.05em;
++    min-width: 90px;
++    padding-top: 2px;
++    text-transform: uppercase;
++  }
++  .glos-def {
++    font-size: 0.88rem;
++    color: var(--muted);
++    line-height: 1.7;
++  }
++
++  /* ─── QUIZ ─── */
++  .quiz-section {
++    padding: 100px 48px;
++    background: var(--surface);
++  }
++  .quiz-inner {
++    max-width: 720px;
++    margin: 0 auto;
++  }
++  .quiz-box {
++    margin-top: 48px;
++    border: 1px solid var(--border);
++    background: var(--bg);
++    padding: 48px;
++  }
++  .quiz-q-num {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.7rem;
++    color: var(--accent);
++    letter-spacing: 0.2em;
++    margin-bottom: 20px;
++  }
++  .quiz-question {
++    font-family: 'Syne', sans-serif;
++    font-weight: 700;
++    font-size: 1.3rem;
++    letter-spacing: -0.01em;
++    margin-bottom: 32px;
++    line-height: 1.4;
++  }
++  .quiz-options { display: flex; flex-direction: column; gap: 12px; }
++  .quiz-opt {
++    padding: 16px 20px;
++    border: 1px solid var(--border);
++    background: var(--surface);
++    cursor: pointer;
++    font-size: 0.92rem;
++    transition: all 0.2s;
++    text-align: left;
++    color: var(--text);
++    font-family: 'DM Sans', sans-serif;
++    display: flex;
++    align-items: center;
++    gap: 14px;
++  }
++  .quiz-opt:hover { border-color: var(--accent); background: var(--surface2); }
++  .quiz-opt.correct { border-color: var(--accent2); background: rgba(74,240,176,0.08); color: var(--accent2); }
++  .quiz-opt.wrong { border-color: var(--accent3); background: rgba(240,96,64,0.08); color: var(--accent3); }
++  .quiz-opt-letter {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.7rem;
++    width: 24px; height: 24px;
++    border: 1px solid var(--border);
++    display: flex; align-items: center; justify-content: center;
++    flex-shrink: 0;
++    letter-spacing: 0;
++  }
++  .quiz-feedback {
++    margin-top: 24px;
++    padding: 16px 20px;
++    font-size: 0.88rem;
++    line-height: 1.6;
++    display: none;
++  }
++  .quiz-feedback.show { display: block; }
++  .quiz-feedback.ok { border-left: 3px solid var(--accent2); color: var(--accent2); background: rgba(74,240,176,0.06); }
++  .quiz-feedback.bad { border-left: 3px solid var(--accent3); color: var(--text); background: rgba(240,96,64,0.06); }
++  .quiz-nav {
++    display: flex;
++    justify-content: space-between;
++    align-items: center;
++    margin-top: 32px;
++  }
++  .quiz-progress-bar {
++    height: 2px;
++    background: var(--border);
++    margin-bottom: 40px;
++    overflow: hidden;
++  }
++  .quiz-progress-fill {
++    height: 100%;
++    background: linear-gradient(90deg, var(--accent2), var(--accent));
++    transition: width 0.5s ease;
++  }
++  .quiz-score {
++    text-align: center;
++    padding: 40px 0;
++    display: none;
++  }
++  .quiz-score-num {
++    font-family: 'Syne', sans-serif;
++    font-weight: 800;
++    font-size: 5rem;
++    color: var(--accent);
++    letter-spacing: -0.04em;
++  }
++  .quiz-score-label {
++    font-family: 'Space Mono', monospace;
++    font-size: 0.75rem;
++    color: var(--muted);
++    letter-spacing: 0.15em;
++    text-transform: uppercase;
++    margin-top: 8px;
++  }
++  .quiz-score-msg {
++    font-size: 1rem;
++    color: var(--muted);
++    margin-top: 20px;
++    line-height: 1.7;
++  }
++
++  @media (max-width: 900px) {
++    .allocator-layout { grid-template-columns: 1fr; }
++    .alloc-display { position: static; }
++    .cycle-nodes { flex-wrap: wrap; justify-content: center; gap: 32px; }
++    .cycle-line, .cycle-progress { display: none; }
++    .glossary-grid { grid-template-columns: 1fr; }
++    .allocator-section, .cycle-section, .glossary-section, .quiz-section { padding-left: 24px; padding-right: 24px; }
++    .quiz-box { padding: 28px 20px; }
++  }
++</style>
++</head>
++<body>
++
++<!-- Custom cursor -->
++<div class="cursor" id="cursor"></div>
++<div class="cursor-ring" id="cursor-ring"></div>
++
++<!-- Background orbs -->
++<div class="orb orb-1"></div>
++<div class="orb orb-2"></div>
++<div class="orb orb-3"></div>
++
++<!-- NAV -->
++<nav>
++  <div class="logo">Kripto<span>Portofol</span></div>
++  <ul>
++    <li><a href="#strategji">Strategji</a></li>
++    <li><a href="#rreziku">Rreziku</a></li>
++    <li><a href="#portofoli">Portofoli</a></li>
++    <li><a href="#cikli">Cikli</a></li>
++    <li><a href="#keshilla">Këshilla</a></li>
++    <li><a href="#quiz">Quiz</a></li>
++  </ul>
++</nav>
++
++<!-- HERO -->
++<section>
++  <div class="hero">
++    <p class="hero-eyebrow">● Portofoli Crypti — nga Dorian Kane</p>
++    <h1 class="hero-title">
++      <span>Investime</span>
++      <span class="line-gold">Kriptomonedha</span>
++      <span class="line-green">Strategji & Këshilla</span>
++    </h1>
++    <p class="hero-sub">Tregu i kriptomonedhave është i paqëndrueshëm, por me strategjitë e duhura mund të menaxhosh rrezikun dhe të ndërtosh portofolin e duhur për ty.</p>
++    <div class="hero-cta">
++      <a href="#strategji" class="btn btn-primary">Eksploro Strategjitë ↓</a>
++      <a href="#keshilla" class="btn btn-outline">Shiko Këshillat</a>
++    </div>
++  </div>
++</section>
++
++<!-- TICKER -->
++<div class="ticker-wrap">
++  <div class="ticker">
++    <div class="ticker-item"><span class="symbol">BTC</span> $67,420 <span class="up">▲ +2.4%</span></div>
++    <div class="ticker-item"><span class="symbol">ETH</span> $3,540 <span class="up">▲ +1.8%</span></div>
++    <div class="ticker-item"><span class="symbol">BNB</span> $612 <span class="down">▼ -0.7%</span></div>
++    <div class="ticker-item"><span class="symbol">SOL</span> $185 <span class="up">▲ +3.2%</span></div>
++    <div class="ticker-item"><span class="symbol">ADA</span> $0.68 <span class="down">▼ -1.1%</span></div>
++    <div class="ticker-item"><span class="symbol">AVAX</span> $42.10 <span class="up">▲ +0.9%</span></div>
++    <div class="ticker-item"><span class="symbol">DOT</span> $9.30 <span class="down">▼ -0.4%</span></div>
++    <div class="ticker-item"><span class="symbol">LINK</span> $18.75 <span class="up">▲ +2.1%</span></div>
++    <!-- Duplicate for seamless loop -->
++    <div class="ticker-item"><span class="symbol">BTC</span> $67,420 <span class="up">▲ +2.4%</span></div>
++    <div class="ticker-item"><span class="symbol">ETH</span> $3,540 <span class="up">▲ +1.8%</span></div>
++    <div class="ticker-item"><span class="symbol">BNB</span> $612 <span class="down">▼ -0.7%</span></div>
++    <div class="ticker-item"><span class="symbol">SOL</span> $185 <span class="up">▲ +3.2%</span></div>
++    <div class="ticker-item"><span class="symbol">ADA</span> $0.68 <span class="down">▼ -1.1%</span></div>
++    <div class="ticker-item"><span class="symbol">AVAX</span> $42.10 <span class="up">▲ +0.9%</span></div>
++    <div class="ticker-item"><span class="symbol">DOT</span> $9.30 <span class="down">▼ -0.4%</span></div>
++    <div class="ticker-item"><span class="symbol">LINK</span> $18.75 <span class="up">▲ +2.1%</span></div>
++  </div>
++</div>
+ 
+-      h1 {
+-        margin: 0;
+-        color: var(--green-1);
+-        letter-spacing: 0.08em;
+-        font-size: clamp(2rem, 5vw, 3.25rem);
+-        font-weight: 700;
++<!-- STATS -->
++<div style="background: var(--surface); position: relative; z-index:1;">
++<div class="stats-band">
++  <div class="stat-box">
++    <div class="stat-num">$2.8T</div>
++    <div class="stat-label">Kapitalizimi Global</div>
++  </div>
++  <div class="stat-box">
++    <div class="stat-num">580M+</div>
++    <div class="stat-label">Investitorë Botërorë</div>
++  </div>
++  <div class="stat-box">
++    <div class="stat-num">22,000+</div>
++    <div class="stat-label">Kriptomonedhave Aktive</div>
++  </div>
++  <div class="stat-box">
++    <div class="stat-num">24/7</div>
++    <div class="stat-label">Treg i Hapur Gjithmonë</div>
++  </div>
++</div>
++</div>
++
++<!-- STRATEGIES -->
++<section id="strategji">
++  <div class="strategies">
++    <div class="section-header">
++      <span class="section-num">// 01</span>
++      <h2 class="section-title">Strategjitë Kryesore</h2>
++    </div>
++    <div class="strategy-grid">
++      <div class="strategy-card" data-n="01">
++        <div class="strategy-icon">₿</div>
++        <div class="strategy-title">HODL — Mbaj Afatgjatë</div>
++        <div class="strategy-desc">Blej dhe mbaj kriptomonedhën për vite. Kjo strategji injoron luhatjet afatshkurtra dhe fokusohet tek rritja strukturore e tregut. Ideal për Bitcoin dhe Ethereum.</div>
++        <div class="strategy-tag">Rrezik i Ulët</div>
++      </div>
++      <div class="strategy-card" data-n="02">
++        <div class="strategy-icon">📊</div>
++        <div class="strategy-title">DCA — Investim Periodik</div>
++        <div class="strategy-desc">Dollar-Cost Averaging: investo shumë të fiksuara periodikisht (çdo javë ose muaj), pavarësisht çmimit. Redukton ndikimin e volatilitetit dhe mesatarizton koston e blerjes.</div>
++        <div class="strategy-tag">Rrezik i Mesëm</div>
++      </div>
++      <div class="strategy-card" data-n="03">
++        <div class="strategy-icon">🔄</div>
++        <div class="strategy-title">Trade Afatshkurtër</div>
++        <div class="strategy-desc">Shfrytëzo luhatjet e çmimit brenda ditës ose javës. Kërkon analiza teknike të thella, disiplinë dhe stop-loss. Vetëm për investitorë me eksperiencë.</div>
++        <div class="strategy-tag">Rrezik i Lartë</div>
++      </div>
++      <div class="strategy-card" data-n="04">
++        <div class="strategy-icon">🌐</div>
++        <div class="strategy-title">Diversifikimi i Portofolit</div>
++        <div class="strategy-desc">Mos vë të gjitha vezët në një shportë. Ndaj investimet ndërmjet Bitcoin (60%), altcoins të konsoliduara (30%), dhe projekteve të reja (10%).</div>
++        <div class="strategy-tag">Rrezik i Ulët</div>
++      </div>
++      <div class="strategy-card" data-n="05">
++        <div class="strategy-icon">💎</div>
++        <div class="strategy-title">Staking & Yield Farming</div>
++        <div class="strategy-desc">Vendos kriptomonedhën tënde të punojë. Staking gjeneron shpërblime pasive (5-20% APY) ndërsa mbron rrjetin blockchain. Yield farming ofron kthime më të larta por me rrezik DeFi.</div>
++        <div class="strategy-tag">Rrezik i Mesëm</div>
++      </div>
++      <div class="strategy-card" data-n="06">
++        <div class="strategy-icon">🔍</div>
++        <div class="strategy-title">Analiza Fundamentale</div>
++        <div class="strategy-desc">Studioje projektin para se të investosh: ekipi, teknologjia, rrjeti, tokenomics, adoptimi. Kërko projekte me vlera reale dhe jo vetëm hype të medias sociale.</div>
++        <div class="strategy-tag">Rrezik i Ulët</div>
++      </div>
++    </div>
++  </div>
++</section>
++
++<!-- RISK SECTION -->
++<section id="rreziku">
++  <div class="risk-section">
++    <div class="risk-inner">
++      <div>
++        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:0.2em;margin-bottom:16px;">// 02 — MENAXHIMI I RREZIKUT</div>
++        <h2 class="risk-title">Kurrë mos investo<br>më shumë se mund të <em>humbasësh</em></h2>
++        <p class="risk-desc">Tregu i kriptomonedhave mund të bjerë 80% brenda javësh. Menaxhimi i rrezikut nuk është opsion — është i domosdoshëm. Mëso të lexosh sinjalin para zhurmës.</p>
++        <a href="#keshilla" class="btn btn-primary" style="display:inline-flex;">Lexo Këshillat →</a>
++      </div>
++      <div>
++        <div class="risk-bars" id="riskBars">
++          <div class="risk-row">
++            <div class="risk-row-header">
++              <span class="risk-name">Bitcoin (BTC)</span>
++              <span class="risk-pct">Rrezik: 45%</span>
++            </div>
++            <div class="risk-track"><div class="risk-fill" style="width:45%"></div></div>
++          </div>
++          <div class="risk-row">
++            <div class="risk-row-header">
++              <span class="risk-name">Ethereum (ETH)</span>
++              <span class="risk-pct">Rrezik: 60%</span>
++            </div>
++            <div class="risk-track"><div class="risk-fill" style="width:60%"></div></div>
++          </div>
++          <div class="risk-row">
++            <div class="risk-row-header">
++              <span class="risk-name">Altcoins Kryesore</span>
++              <span class="risk-pct">Rrezik: 75%</span>
++            </div>
++            <div class="risk-track"><div class="risk-fill" style="width:75%"></div></div>
++          </div>
++          <div class="risk-row">
++            <div class="risk-row-header">
++              <span class="risk-name">DeFi Protokollet</span>
++              <span class="risk-pct">Rrezik: 85%</span>
++            </div>
++            <div class="risk-track"><div class="risk-fill" style="width:85%"></div></div>
++          </div>
++          <div class="risk-row">
++            <div class="risk-row-header">
++              <span class="risk-name">Meme Coins / NFTs</span>
++              <span class="risk-pct">Rrezik: 97%</span>
++            </div>
++            <div class="risk-track"><div class="risk-fill" style="width:97%;background:linear-gradient(90deg,var(--accent3),#ff3030)"></div></div>
++          </div>
++        </div>
++      </div>
++    </div>
++  </div>
++</section>
++
++<!-- TIPS -->
++<section id="keshilla">
++  <div class="tips">
++    <div class="section-header">
++      <span class="section-num">// 03</span>
++      <h2 class="section-title">10 Këshilla Esenciale</h2>
++    </div>
++    <div class="tips-list">
++      <div class="tip-row">
++        <div class="tip-n">01</div>
++        <div class="tip-text">Kurrë mos investo para që ke nevojë urgjentisht</div>
++        <div class="tip-badge badge-low">Themelore</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">02</div>
++        <div class="tip-text">Mbaj hardware wallet për sasi të mëdha — jo exchange</div>
++        <div class="tip-badge badge-low">Siguria</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">03</div>
++        <div class="tip-text">Aktivizo 2FA në të gjitha llogaritë e exchange</div>
++        <div class="tip-badge badge-low">Siguria</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">04</div>
++        <div class="tip-text">Studioje projektin — shmangi FOMO dhe hype të rrjeteve sociale</div>
++        <div class="tip-badge badge-med">Strategji</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">05</div>
++        <div class="tip-text">Vendos Stop-Loss para çdo tradingu</div>
++        <div class="tip-badge badge-med">Strategji</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">06</div>
++        <div class="tip-text">Diversifiko — asnjëherë 100% e kapitalit në një projekt</div>
++        <div class="tip-badge badge-med">Portofoli</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">07</div>
++        <div class="tip-text">Mbaj rekord të të gjitha transaksioneve për tatimet</div>
++        <div class="tip-badge badge-low">Ligjore</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">08</div>
++        <div class="tip-text">Shmangi levën (leverage) nëse je fillestar</div>
++        <div class="tip-badge badge-high">Kritike</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">09</div>
++        <div class="tip-text">Ndjek ciklin e tregut — Bull/Bear market kanë ritme të ndryshme</div>
++        <div class="tip-badge badge-med">Analiza</div>
++      </div>
++      <div class="tip-row">
++        <div class="tip-n">10</div>
++        <div class="tip-text">Merr fitimet periodikisht — mos prit "moon" të plotë</div>
++        <div class="tip-badge badge-med">Strategji</div>
++      </div>
++    </div>
++  </div>
++</section>
++
++<!-- DISCLAIMER -->
++<div class="disclaimer">
++  <div class="disclaimer-inner">
++    <div class="disclaimer-icon">⚠️</div>
++    <p class="disclaimer-text"><strong>Paralajmërim i Rëndësishëm:</strong> Ky material është vetëm për qëllime edukative dhe informuese. Investimet në kriptomonedhave paraqesin rrezik të lartë dhe mund të rezultojnë në humbje të plotë të kapitalit. Ky nuk është këshillim financiar. Gjithmonë konsultohuni me një këshilltar financiar të licencuar përpara çdo vendimi investimi. Performanca e kaluar nuk garanton rezultate të ardhshme.</p>
++  </div>
++</div>
++
++<!-- FOOTER -->
++<footer>
++  <div class="footer-logo">Kripto<span style="color:var(--text);font-size:1rem;font-weight:400"> Portofol</span></div>
++  <div class="footer-copy">© 2025 Dorian Kane · Të gjitha të drejtat e rezervuara</div>
++</footer>
++
++<script>
++  // Custom cursor
++  const cursor = document.getElementById('cursor');
++  const ring = document.getElementById('cursor-ring');
++  let mx = 0, my = 0, rx = 0, ry = 0;
++  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
++  function animateCursor() {
++    cursor.style.left = mx - 5 + 'px';
++    cursor.style.top = my - 5 + 'px';
++    rx += (mx - rx - 18) * 0.12;
++    ry += (my - ry - 18) * 0.12;
++    ring.style.left = rx + 'px';
++    ring.style.top = ry + 'px';
++    requestAnimationFrame(animateCursor);
++  }
++  animateCursor();
++
++  // Risk bar animation on scroll
++  const riskSection = document.getElementById('riskBars');
++  const fills = riskSection.querySelectorAll('.risk-fill');
++  const widths = Array.from(fills).map(f => f.style.width);
++  fills.forEach(f => f.style.width = '0');
++
++  const obs = new IntersectionObserver(entries => {
++    if (entries[0].isIntersecting) {
++      fills.forEach((f, i) => {
++        setTimeout(() => {
++          f.style.width = widths[i];
++          f.style.transition = `width 1.2s cubic-bezier(0.22, 1, 0.36, 1) ${i * 0.15}s`;
++        }, i * 100);
++      });
++      obs.disconnect();
++    }
++  }, { threshold: 0.4 });
++  obs.observe(riskSection);
++
++  // Tip rows stagger on scroll
++  const tipRows = document.querySelectorAll('.tip-row');
++  tipRows.forEach((row, i) => {
++    row.style.opacity = '0';
++    row.style.transform = 'translateX(-20px)';
++    row.style.transition = `all 0.5s ease ${i * 0.07}s`;
++  });
++  const tipObs = new IntersectionObserver(entries => {
++    entries.forEach(e => {
++      if (e.isIntersecting) {
++        tipRows.forEach(r => { r.style.opacity = '1'; r.style.transform = 'none'; });
++        tipObs.disconnect();
+       }
+-    </style>
+-  </head>
+-  <body>
+-    <main class="logo-wrap" aria-label="DUA CRYPTO landing page">
+-      <div class="mark" role="img" aria-label="Logo DUA CRYPTO me simbolin Bitcoin">
+-        <span>₿</span>
+-      </div>
+-      <h1>DUA CRYPTO</h1>
+-    </main>
+-  </body>
++    });
++  }, { threshold: 0.1 });
++  if (tipRows[0]) tipObs.observe(tipRows[0]);
++
++  // Stat counter animation
++  const statNums = document.querySelectorAll('.stat-num');
++  const statObs = new IntersectionObserver(entries => {
++    if (entries[0].isIntersecting) {
++      statNums.forEach(el => {
++        el.style.opacity = '0';
++        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
++        el.style.transform = 'translateY(10px)';
++        setTimeout(() => {
++          el.style.opacity = '1';
++          el.style.transform = 'none';
++        }, 100 + Array.from(statNums).indexOf(el) * 150);
++      });
++      statObs.disconnect();
++    }
++  }, { threshold: 0.4 });
++  statObs.observe(statNums[0]);
++</script>
++</body>
+ </html>
+ 
+EOF
+)
